@@ -1,0 +1,12 @@
+- name: Checking if the variable is defined
+  hosts: all
+  vars:
+    my_service: Web-Server
+  tasks:
+  - name: Install "{{ my_service }}" with sub features and management tools if my_service is defined
+    win_feature:
+      name: "{{ my_service }}"
+      state: present
+      include_sub_features: yes
+      include_management_tools: yes
+    when: my_service is defined

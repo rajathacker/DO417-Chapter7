@@ -1,0 +1,11 @@
+---
+- name: Testing ignoring errors
+  hosts: all
+  tasks:
+  - name: Install notafeature with sub features and management tools
+    win_feature:
+      name: notafeature
+      state: present
+      include_sub_features: yes
+      include_management_tools: yes
+    ignore_errors: true

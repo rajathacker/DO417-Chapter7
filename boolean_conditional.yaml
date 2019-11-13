@@ -1,0 +1,16 @@
+- name: Simple Boolean Task Demo
+  hosts: all
+  vars:
+    run_my_task: true
+  tasks:
+  - name: Install IIS Web-Server with sub features and management tools
+    win_feature:
+      name: Web-Server
+      state: present
+      include_sub_features: yes
+      include_management_tools: yes
+    when: run_my_task
+    register: feature_output
+  - name: Reboot if installing Web-Server feature requires it
+    win_reboot:
+    when: feature_output.reboot_required

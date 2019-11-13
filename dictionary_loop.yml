@@ -1,0 +1,14 @@
+---
+- name: Testing dictionary based loop
+  hosts: all
+  tasks:
+  - name: Creating local users
+    win_user:
+      name: "{{ item.name }}"
+      groups: "{{ item.grp }}"
+      description: "{{ item.desc }}"
+      state: present
+    loop:
+    - { name: 'itadmin', grp: 'Administrators', desc: 'New admin user' }
+    - { name: 'ituser1', grp: 'Users', desc: 'local user' }
+    - { name: 'ituser2', grp: 'Users', desc: 'local user' }
