@@ -2,11 +2,11 @@
   hosts: all
   vars:
     my_service: Web-Server
-  supported_distros:
-  - "Microsoft Windows Server 2016 Datacenter"
-  - "Microsoft Windows Server 2016 Core"
-  - "Microsoft Windows Server 2012 Datacenter"
-  - "Microsoft Windows Server 2012 Core"
+    supported_distros:
+    - "Microsoft Windows Server 2016 Datacenter"
+    - "Microsoft Windows Server 2016 Core"
+    - "Microsoft Windows Server 2012 Datacenter"
+    - "Microsoft Windows Server 2012 Core"
   tasks:
   - name: Install "{{ my_service }}" with sub features and management tools
     win_feature:
